@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Digital Clock</title>
+   <style>
+
+body {
+    background-color:black;
+    width:100%;
+    text-align:center ;
+}
+h1{
+ color:grey;   
+ text-shadow:5px 5px 25px white;
+ text-align:center;
+}
+#clock{
+   box-shadow:0px 0px 25px black;
+   border-style: outset;
+   border-color:#00E676;
+   background-color:black; 
+   width:85%;
+   height:15%;
+   font-size:55px;
+   color:#00E676;
+   position:absolute ;
+   left:8%;
+   top:40%;
+   text-align:center;
+   font-weight:bolder;
+   font-family:cursive;
+   
+}
+
+</style>
+</head>
+
+<body onload="setClock()">
+<div class="badge">
+
+</div>
+<div id="clock"></div>
+<script>
+var ampm = " ";
+function setClock() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    if (h < 12){ ampm = " AM" }else{ampm = "PM"};
+   document.getElementById('clock').innerHTML =
+    h%12 + ":" + m + ":" + s + ":" + ampm;
+    var t = setTimeout(setClock, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}</script>
+</body>
+</html>
